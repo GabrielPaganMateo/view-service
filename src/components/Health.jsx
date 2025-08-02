@@ -1,30 +1,30 @@
 import { useEffect, useState } from "react";
 import { createHealthRetry, runHealthCheck } from "../utility-functions/healthcheck";
 import '../style-sheets/health.css'
+import InitialLoader from "./InitialLoader";
 
-function Health() {
+function Health({health}) {
    const [available, setAvailable] = useState();
-   useEffect(() => {runHealthCheck(setAvailable)}, [available])
+   useEffect(() => {runHealthCheck(setAvailable)}, [])
    useEffect(() => {
     const retryInterval = createHealthRetry(setAvailable); 
     return () => clearInterval(retryInterval);
    }, [])
+   useEffect(() => {
+    health.setHealth(available);
+   }, [available, health])
 
    if (available === undefined) {
     return (
         <>
             <div className="health-container">
-                <div id="col">
-                    <div id="img-wrap">
-                        <span className="initialLoader"></span>
-                    </div>
-                </div>
+                <InitialLoader/>
             </div>
          </>
     )
    }
 
-   if (available == false) {
+   if (available === false) {
     return (
         <>
             {!available && 
@@ -41,7 +41,12 @@ function Health() {
     )
    }
 
-    // return ({available})
+   if (available === true) {
+    return (
+        <>
+        </>
+    )
+   }
 }
 
 export default Health;

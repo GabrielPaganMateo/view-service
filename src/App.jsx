@@ -1,16 +1,17 @@
-// import { useEffect, useState } from 'react';
-// import healthcheck from './utility-functions/healthcheck'
-
+import { useState } from "react"
 import Health from "./components/Health"
+import Login from "./components/Login";
 
 function App() {
-  // const [health, setHealth] = useState();
-  // const response = healthcheck();
-  // useEffect(() => {response.then(data => setHealth(data))})
+  const [health, setHealth] = useState();
+
   return (
     <>
-      {/* {health !== undefined ? health.message : "hello"} */}
-      <Health/>
+      {health === undefined || health === false ? 
+        <Health health={{'setHealth' : setHealth}}/>
+        :
+        <Login/>
+      }
     </>
   )
 }
