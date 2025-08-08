@@ -1,0 +1,8 @@
+.error-div {
+    color: red;
+}
+
+.email-label {
+    display: flex;
+    margin-bottom: 0.75em;
+}

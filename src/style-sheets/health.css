@@ -18,7 +18,7 @@
   flex-direction: column;
 }
 
-p {
+.health-p {
   font-weight: bold;
   font-style:normal;
   font-size: 2em;

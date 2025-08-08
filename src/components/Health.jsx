@@ -30,7 +30,7 @@ function Health({health}) {
             {!available && 
             <>
                 <div className="health-container">
-                    <p>Service unavailable, try again later.</p>
+                    <p className="health-p">Service unavailable, try again later.</p>
                     <div className="bg">
                         <div className="loader"></div>
                     </div>

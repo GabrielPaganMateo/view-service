@@ -1,6 +1,7 @@
 import { useState } from "react"
 import Health from "./components/Health"
-import Login from "./components/Login";
+import LoginOrRegister from "./components/LoginOrRegister";
+import FormSwitch from "./components/FormSwitch";
 
 function App() {
   const [health, setHealth] = useState();
@@ -10,7 +11,7 @@ function App() {
       {health === undefined || health === false ? 
         <Health health={{'setHealth' : setHealth}}/>
         :
-        <Login/>
+        <FormSwitch/>
       }
     </>
   )

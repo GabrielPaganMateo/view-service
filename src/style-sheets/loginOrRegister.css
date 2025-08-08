@@ -1,0 +1,9 @@
+.loginregister-container {
+    color: #fff;
+}
+
+.loginregister-link {
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+}
