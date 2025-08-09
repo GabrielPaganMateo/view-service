@@ -1,14 +1,11 @@
-import ApiEndpoint from "../enumerators/ApiEndpoint";
-import FormType from "../enumerators/FormType";
-import InputName from "../enumerators/InputName";
+import FormType from "../constants/FormType";
 import ApiRequest from "../utility-classes/ApiRequest";
 import fetchResponse from "./fetchResponse";
 
-function handleFormSubmit(form, setForm, setResponse, event, auth) {
+function handleFormSubmit(form, setResponse, event, auth) {
     event.preventDefault();
-    const formType = new FormType();
     const request = new ApiRequest();
-    if (form === formType.REGISTER) {
+    if (form === FormType.REGISTER) {
         request.setRegisterRequest(event);
         fetchResponse(request, setResponse, auth.setToken);
     }

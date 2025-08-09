@@ -1,5 +1,5 @@
-import ErrorCode from "../enumerators/ErrorCode";
-import ResponseCode from "../enumerators/ResponseCode";
+import ErrorCode from "../constants/ErrorCode";
+import ResponseCode from "../constants/ResponseCode";
 
 
 async function healthcheck() {
@@ -7,7 +7,7 @@ async function healthcheck() {
         return await (await fetch("https://localhost:8080/health")).json();
     } catch (error) {
         console.log(error);
-        return new Error((new ErrorCode()).UNAVAILABLE);
+        return new Error(ErrorCode.UNAVAILABLE);
     }
     
 }
@@ -15,7 +15,7 @@ async function healthcheck() {
 function runHealthCheck(setAvailable) {
     healthcheck().then(response => {
         console.log(response.message)
-        if (response.code === (new ResponseCode()).SERVICE_OK) {
+        if (response.code === ResponseCode.SERVICE_OK) {
             setAvailable(true)
         } else {
             setAvailable(false)

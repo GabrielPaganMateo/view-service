@@ -1,36 +1,34 @@
-import FormType from "../enumerators/FormType";
-import InputName from "../enumerators/InputName";
+import FormType from "../constants/FormType";
+import InputName from "../constants/InputName";
 
 function InputSwitch({form}) {
-    const formType = new FormType();
-    const inputName = new InputName();
 
     switch (form) {
 
-        case formType.REGISTER:
+        case FormType.REGISTER:
 
             return (
                 <>
                     <div className="email-input">
-                        <input type="text" name={inputName.EMAIL} placeholder="user@email.com"></input><br/><br/>
+                        <input type="text" name={InputName.EMAIL} placeholder="user@email.com"></input><br/><br/>
                         <input type="submit" value="Register"></input>
                     </div>
                 </>
             );
 
-        case formType.VERIFY:
+        case FormType.VERIFY:
 
             return (
                 <></>
             );
 
-        case formType.CONFIRM:
+        case FormType.CONFIRM:
 
             return (
                 <></>
             );
         
-        case formType.LOGIN:
+        case FormType.LOGIN:
 
             return (
                 <></>

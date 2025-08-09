@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import {registerEmail, handleRegistration} from "../utility-functions/registration";
-import ResponseCode from "../enumerators/ResponseCode";
+import ResponseCode from "../constants/ResponseCode";
 import '../style-sheets/register.css';
 
 function Register({setForm}) {

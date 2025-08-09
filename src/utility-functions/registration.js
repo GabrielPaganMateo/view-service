@@ -1,4 +1,4 @@
-import ResponseCode from "../enumerators/ResponseCode";
+import ResponseCode from "../constants/ResponseCode";
 
 async function registerEmail(setResponse, userEmail) {
     try {
