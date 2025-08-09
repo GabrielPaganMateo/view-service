@@ -1,22 +1,16 @@
+import ApiEndpoint from "../enumerators/ApiEndpoint";
 import FormType from "../enumerators/FormType";
 import InputName from "../enumerators/InputName";
-import RequestBody from "../utility-classes/RequestBody";
+import ApiRequest from "../utility-classes/ApiRequest";
 import fetchResponse from "./fetchResponse";
 
-function handleFormSubmit(form, setForm, setResponse, event) {
+function handleFormSubmit(form, setForm, setResponse, event, auth) {
     event.preventDefault();
     const formType = new FormType();
-    const inputName = new InputName();
-    const body = new RequestBody();
-    let endpoint;
-    
-    console.log(event.target[inputName.EMAIL].value)
-    // create object that will contain the target values...
-    // this object will then be passed to a single dynamic fetch call
+    const request = new ApiRequest();
     if (form === formType.REGISTER) {
-        body.email = event.target[inputName.EMAIL].value;
-        endpoint = '/register';
-        fetchResponse(endpoint, body, setResponse);
+        request.setRegisterRequest(event);
+        fetchResponse(request, setResponse, auth.setToken);
     }
 
 }

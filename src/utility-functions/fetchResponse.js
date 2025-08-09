@@ -1,17 +1,17 @@
 
-async function fetchResponse(endpoint, body, setResponse) {
+async function fetchResponse(request, setResponse, setToken) {
     try {
-        const response = await fetch('https://localhost:8080' + endpoint, {
+        const response = await fetch('https://localhost:8080' + request.endpoint, {
             method : 'POST',
             headers : { 
                 'Content-Type' : 'application/json'
             },
-            body : JSON.stringify({ email : body.email })
+            
+            body : JSON.stringify(request.getRegisterRequestBody())
         })
-
-        const token = response.headers['authorization'];
-        console.log(token);
-        response.json().then(data => setResponse(data))
+        // Browser only exposes Authorization header if exposed by backend
+        setToken(response.headers.get('Authorization'));
+        response.json().then(data => setResponse(data));
     } catch (error) {
         console.log(error);
     }

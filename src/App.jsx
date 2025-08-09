@@ -1,7 +1,7 @@
 import { useState } from "react"
 import Health from "./components/Health"
-import LoginOrRegister from "./components/LoginOrRegister";
 import FormSwitch from "./components/FormSwitch";
+import AuthProvider from "./providers/AuthProvider";
 
 function App() {
   const [health, setHealth] = useState();
@@ -11,7 +11,9 @@ function App() {
       {health === undefined || health === false ? 
         <Health health={{'setHealth' : setHealth}}/>
         :
-        <FormSwitch/>
+        <AuthProvider>
+          <FormSwitch/>
+        </AuthProvider>
       }
     </>
   )
