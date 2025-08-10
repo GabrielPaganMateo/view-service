@@ -8,6 +8,9 @@ function handleFormSubmit(form, setResponse, event, auth) {
     if (form === FormType.REGISTER) {
         request.setRegisterRequest(event);
         fetchResponse(request, setResponse, auth.setToken);
+    } else if (form === FormType.VERIFY) {
+        request.setVerifyRequest(event, auth.token);
+        fetchResponse(request, setResponse, auth.setToken);
     }
 
 }

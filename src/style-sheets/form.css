@@ -1,0 +1,18 @@
+.form-label {
+    color: white;
+}
+
+
+.loginregister-link {
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+    color: white;
+    margin: 10%;
+}
+
+.formswitch-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
