@@ -5,3 +5,11 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+root {
+    display: flex;
+    width: inherit;
+    height: inherit;
+    justify-content: center;
+    align-items: center;
+}

@@ -33,8 +33,11 @@ function FormSwitch({setHealth}) {
 
             return (
                 <>
-                    <ResponseMessage response={response}/>
-                    <Form form={form} setForm={setForm} setResponse={setResponse}/>
+                    <div className="formswitch-container">
+                        <ResponseMessage response={response}/>
+                        <Form form={form} setForm={setForm} setResponse={setResponse}/>
+                        <div>&nbsp;</div>
+                    </div>
                 </>
             );
 
@@ -42,8 +45,11 @@ function FormSwitch({setHealth}) {
 
             return (
                 <>
-                    <ResponseMessage response={response}/>
-                    <Form form={form} setForm={setForm} setResponse={setResponse}/>
+                    <div className="formswitch-container">
+                        <ResponseMessage response={response}/>
+                        <Form form={form} setForm={setForm} setResponse={setResponse}/>
+                        <div>&nbsp;</div>
+                    </div>
                 </>
             );
         

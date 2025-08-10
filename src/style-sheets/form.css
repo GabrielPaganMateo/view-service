@@ -16,4 +16,8 @@
     display: flex;
     flex-direction: column;
     row-gap: 2vh;
+    width: inherit;
+    height: inherit;
+    align-items: center;
+    justify-content: center;
 }

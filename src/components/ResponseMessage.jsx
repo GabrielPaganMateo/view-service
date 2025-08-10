@@ -5,7 +5,9 @@ function ResponseMessage({response}) {
     if (response !== undefined) {
         return (
             <>
-                <label className="form-label" htmlFor="form-container">{response.message}</label>
+                <div>
+                    <label className="form-label" htmlFor="form-container">{response.message}</label>
+                </div>
             </>
         )
     }

@@ -1,3 +1,4 @@
+import ErrorMessage from '../constants/ErrorMessage';
 import ResponseCode from '../constants/ResponseCode';
 import ResponseKeys from '../constants/ResponseKeys';
 import ApiResponse from '../utility-classes/ApiResponse'
@@ -24,7 +25,7 @@ async function fetchResponse(request, setResponse, setToken) {
 
     } catch (error) {
         console.log(error);
-        setResponse(new ApiResponse(ResponseCode.CONN_REFUSED, , null));
+        setResponse(new ApiResponse(ResponseCode.CONN_REFUSED, ErrorMessage.FAILED_CONN, null));
     }
 }
 
