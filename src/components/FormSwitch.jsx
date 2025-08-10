@@ -6,10 +6,10 @@ import ResponseMessage from "./ResponseMessage";
 import '../style-sheets/form.css'
 
 
-function FormSwitch() {
+function FormSwitch({setHealth}) {
     const [form, setForm] = useState('REGISTER')
     const [response, setResponse] = useState();
-    useEffect(() => handleFormResponse(response, form, setForm), // eslint-disable-next-line react-hooks/exhaustive-deps
+    useEffect(() => handleFormResponse(response, form, setForm, setHealth), // eslint-disable-next-line react-hooks/exhaustive-deps
         [response]
     );
 
@@ -23,7 +23,7 @@ function FormSwitch() {
                         <ResponseMessage response={response}/>
                         <Form form={form} setForm={setForm} setResponse={setResponse}/>
                         <div className="loginregister-link">
-                            <a onClick={() => {setForm(FormType.LOGIN)}}>Already have an account ? Click here to Sign in</a>
+                            <a onClick={() => {setForm(FormType.LOGIN)}}>Already have an account ? Click here to Log in</a>
                         </div>
                     </div>
                 </>
@@ -50,7 +50,15 @@ function FormSwitch() {
         case FormType.LOGIN:
 
             return (
-                <></>
+                <>
+                    <div className="formswitch-container">
+                        <ResponseMessage response={response}/>
+                        <Form form={form} setForm={setForm} setResponse={setResponse}/>
+                        <div className="loginregister-link">
+                            <a onClick={() => {setForm(FormType.REGISTER)}}>Don't have an account ? Click here to Register</a>
+                        </div>
+                    </div>
+                </>
             );
     }
 }

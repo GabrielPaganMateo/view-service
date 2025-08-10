@@ -1,4 +1,4 @@
-import ErrorCode from "../constants/ErrorCode";
+import ErrorMessage from "../constants/ErrorMessage";
 import ResponseCode from "../constants/ResponseCode";
 
 
@@ -7,7 +7,7 @@ async function healthcheck() {
         return await (await fetch("https://localhost:8080/health")).json();
     } catch (error) {
         console.log(error);
-        return new Error(ErrorCode.UNAVAILABLE);
+        return new Error(ErrorMessage.UNAVAILABLE);
     }
     
 }

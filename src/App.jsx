@@ -13,7 +13,7 @@ function App() {
         <Health health={{'setHealth' : setHealth}}/>
         :
         <AuthProvider>
-          <FormSwitch/>
+          <FormSwitch setHealth={setHealth}/>
         </AuthProvider>
       }
     </>

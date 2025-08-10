@@ -1,6 +1,5 @@
 import ApiEndpoint from "../constants/ApiEndpoint";
 import InputName from "../constants/InputName";
-import clearTargetValue from "../utility-functions/clearTargetValue";
 
 class ApiRequest {
 
@@ -12,36 +11,45 @@ class ApiRequest {
 
     constructor() {}
 
-    setRegisterRequest(event) {
-        this.email = event.target[InputName.EMAIL].value;
+    setRegisterRequest(values) {
+        this.email = values[InputName.EMAIL_REGISTER];
         this.endpoint = ApiEndpoint.REGISTER;
-        clearTargetValue(event.target[InputName.EMAIL]);
     }
 
     getRegisterRequestBody() {
         return { email : this.email }
     }
 
-    setVerifyRequest(event, token) {
-        this.code = event.target[InputName.CODE].value;
+    setVerifyRequest(values, token) {
+        console.log(values);
+        this.code = values[InputName.CODE];
+        console.log(this.code)
         this.endpoint = ApiEndpoint.VERIFY;
         this.token = token;
-        clearTargetValue(event.target[InputName.CODE]);
     }
 
     getVerifyRequestBody() {
         return { code : this.code }
     }
 
-    setConfirmRequest(event, token) {
-        this.password = event.target[InputName.PASSWORD].value;
+    setConfirmRequest(values, token) {
+        this.password = values[InputName.PASSWORD_CONFIRM1];
         this.endpoint = ApiEndpoint.CONFIRM;
         this.token = token;
-        clearTargetValue(event.target[InputName.PASSWORD]);
     }
 
     getConfirmRequestBody() {
         return { password : this.password}
+    }
+
+    setLoginRequest(values) {
+        this.email = values[InputName.EMAIL_LOGIN];
+        this.password = values[InputName.PASSWORD_LOGIN];
+        this.endpoint = ApiEndpoint.LOGIN;
+    }
+
+    getLoginRequestBody() {
+        return { email : this.email, password : this.password }
     }
 
     getRequestBodyByEndpoint() {
@@ -51,6 +59,8 @@ class ApiRequest {
             return this.getVerifyRequestBody();
         } else if (this.endpoint === ApiEndpoint.CONFIRM) {
             return this.getConfirmRequestBody();
+        } else if (this.endpoint === ApiEndpoint.LOGIN) {
+            return this.getLoginRequestBody();
         }
     }
 

@@ -1,3 +1,4 @@
+import ResponseCode from '../constants/ResponseCode';
 import ResponseKeys from '../constants/ResponseKeys';
 import ApiResponse from '../utility-classes/ApiResponse'
 
@@ -8,6 +9,13 @@ async function fetchResponse(request, setResponse, setToken) {
             headers : request.getRequestHeadersByEndpoint(),
             body : JSON.stringify(request.getRequestBodyByEndpoint())
         })
+
+        if (response.status === 500) {
+            response.json().then(() => setResponse(
+                new ApiResponse(null, "Internal Server Error", null)
+            ));
+            return;
+        }
         // Browser only exposes Authorization header if exposed by backend
         setToken(response.headers.get(ResponseKeys.AUTHORIZATION));
         response.json().then(data => setResponse(
@@ -16,6 +24,7 @@ async function fetchResponse(request, setResponse, setToken) {
 
     } catch (error) {
         console.log(error);
+        setResponse(new ApiResponse(ResponseCode.CONN_REFUSED, , null));
     }
 }
 

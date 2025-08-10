@@ -1,7 +1,8 @@
 import FormType from "../constants/FormType";
 import InputName from "../constants/InputName";
+import handleValueChange from "../utility-functions/handleValueChange";
 
-function InputSwitch({form}) {
+function InputSwitch({form, values, setValues}) {
 
     switch (form) {
 
@@ -10,7 +11,7 @@ function InputSwitch({form}) {
             return (
                 <>
                     <div className="form-input">
-                        <input type="text" name={InputName.EMAIL} placeholder="user@email.com"></input><br/><br/>
+                        <input type="text" name={InputName.EMAIL_REGISTER} placeholder="user@email.com" value={values.emailRegister} onChange={(event) => handleValueChange(event, values, setValues)}></input><br/><br/>
                         <input type="submit" value="Register"></input>
                     </div>
                 </>
@@ -21,7 +22,7 @@ function InputSwitch({form}) {
             return (
                 <>
                     <div className="form-input">
-                        <input type="text" name={InputName.CODE} placeholder="123456"></input><br/><br/>
+                        <input type="text" name={InputName.CODE} placeholder="123456" value={values.code} onChange={(event) => handleValueChange(event, values, setValues)}></input><br/><br/>
                         <input type="submit" value="Verify"></input>
                     </div>                
                 </>
@@ -32,8 +33,8 @@ function InputSwitch({form}) {
             return (
                 <>
                     <div className="form-input">
-                        <input type="password" name={InputName.PASSWORD} placeholder="password"></input><br/><br/>
-                        <input type="password" name="pwd-confirmation" placeholder="confirm password"></input><br/><br/>
+                        <input type="password" name={InputName.PASSWORD_CONFIRM1} placeholder="password" value={values.passwordConfirm1} onChange={(event) => handleValueChange(event, values, setValues)}></input><br/><br/>
+                        <input type="password" name={InputName.PASSWORD_CONFIRM2} placeholder="confirm password" value={values.passwordConfirm2} onChange={(event) => handleValueChange(event, values, setValues)}></input><br/><br/>
                         <input type="submit" value="Confirm"></input>
                     </div>  
                 </>
@@ -42,7 +43,13 @@ function InputSwitch({form}) {
         case FormType.LOGIN:
 
             return (
-                <></>
+                <>
+                    <div className="form-input">
+                        <input type="text" name={InputName.EMAIL_LOGIN} placeholder="user@email.com" value={values.emailLogin} onChange={(event) => handleValueChange(event, values, setValues)}></input><br/><br/>
+                        <input type="password" name={InputName.PASSWORD_LOGIN} placeholder="password" value={values.passwordLogin} onChange={(event) => handleValueChange(event, values, setValues)}></input><br/><br/>
+                        <input type="submit" value="Login"></input>
+                    </div>  
+                </>
             );
     }
 }

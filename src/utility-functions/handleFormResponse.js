@@ -2,7 +2,7 @@ import FormType from "../constants/FormType";
 import ResponseCode from "../constants/ResponseCode";
 
 
-function handleFormResponse(response, form, setForm) {
+function handleFormResponse(response, form, setForm, setHealth) {
     console.log(response);
     if (response !== undefined) {
         // FAIL REDIRECT
@@ -21,6 +21,9 @@ function handleFormResponse(response, form, setForm) {
         } else if (response.code === ResponseCode.USER_CONFIRMED) {
             setForm(FormType.LOGIN);
             return;
+        } else if (response.code === ResponseCode.CONN_REFUSED) {
+            setHealth(false);
+            return;
         }
         
         // SUCCESS REDIRECT
@@ -31,7 +34,9 @@ function handleFormResponse(response, form, setForm) {
             setForm(FormType.CONFIRM);
             return;
         } else if (response.code === ResponseCode.CONFIRM_OK) {
-            console.log("REDIRECT TO APP"); // REDIRECT TO APP
+            window.location.replace("https://www.example.com");
+        } else if (response.code === ResponseCode.LOGIN_OK) {
+            window.location.replace("https://www.example.com");
         }
     }
 }
